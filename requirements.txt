@@ -1,1 +1,10 @@
+fastapi
+uvicorn
 sqlalchemy
+psycopg2-binary
+pydantic
+pydantic-settings
+python-dotenv
+stripe
+pytest
+httpx

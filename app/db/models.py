@@ -1,9 +1,9 @@
 import enum
 from datetime import datetime, timezone
 from sqlalchemy import Column, String, Integer, DateTime, ForeignKey, Enum, UniqueConstraint
-from sqlalchemy.orm import declarative_base, relationship
+from sqlalchemy.orm import relationship
 
-Base = declarative_base()
+from app.db.database import Base
 
 class PlanType(str, enum.Enum):
     FREE = "free"
