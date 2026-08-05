@@ -1,0 +1,12 @@
+version: "1.0"
+name: flyrank-capstone-metering-billing
+track: backend-ai-engineer
+
+run: uvicorn app.main:app
+test: pytest
+seed: python -m app.db.seed
+
+base_url: http://localhost:8000
+
+endpoints:
+  health: GET /health
