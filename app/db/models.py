@@ -16,7 +16,7 @@ class UsageType(str, enum.Enum):
 class Tenant(Base):
     __tablename__ = "tenants"
 
-    id = Column(String, primary_grade=True, primary_key=True)
+    id = Column(String, primary_key=True)
     name = Column(String, nullable=False)
     created_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc))
 
@@ -27,7 +27,7 @@ class Plan(Base):
     __tablename__ = "plans"
 
     id = Column(String, primary_key=True)
-    name = Column(PlanType, nullable=False, unique=True)
+    name = Column(Enum(PlanType), nullable=False, unique=True)
     max_api_calls_per_month = Column(Integer, nullable=False)
     max_tokens_per_month = Column(Integer, nullable=False)
 
