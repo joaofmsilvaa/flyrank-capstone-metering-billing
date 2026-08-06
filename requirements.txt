@@ -7,4 +7,4 @@ pydantic-settings
 python-dotenv
 stripe
 pytest
-httpx
+httpx2
