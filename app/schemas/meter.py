@@ -27,3 +27,10 @@ class BillableResponse(BaseModel):
     event_id: str
     recorded_quantity: int
     is_duplicate: bool = Field(default=False, description="Indica se a requisição foi reconhecida via Idempotency-Key")
+
+class UsageSummaryResponse(BaseModel):
+    tenant_id: str
+    plan_name: str
+    period: str
+    api_calls: dict
+    ai_tokens: dict

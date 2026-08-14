@@ -78,3 +78,13 @@ def test_inactive_subscription_returns_402(client: TestClient, db_session: Sessi
 
     assert response.status_code == 402
     assert response.json()["detail"]["error"] == "payment_required"
+
+def test_get_tenant_usage_summary(client: TestClient):
+    response = client.get("/api/v1/usage/tenant_acme")
+    assert response.status_code == 200
+    data = response.json()
+    
+    assert data["tenant_id"] == "tenant_acme"
+    assert "api_calls" in data
+    assert "ai_tokens" in data
+    assert "percentage" in data["api_calls"]
