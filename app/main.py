@@ -2,7 +2,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from app.db.database import engine, Base
 from app.core.config import settings
-from app.api.routers import meter
+from app.api.routers import meter, webhooks
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -14,8 +14,8 @@ app = FastAPI(
     lifespan=lifespan
 )
 
-# Registra a rota faturável
 app.include_router(meter.router)
+app.include_router(webhooks.router)
 
 @app.get("/health")
 def health_check():

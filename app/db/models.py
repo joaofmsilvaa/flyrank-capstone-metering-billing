@@ -60,3 +60,10 @@ class UsageEvent(Base):
     __table_args__ = (
         UniqueConstraint('tenant_id', 'idempotency_key', name='uq_tenant_idempotency_key'),
     )
+
+class ProcessedWebhook(Base):
+    __tablename__ = "processed_webhooks"
+
+    event_id = Column(String, primary_key=True)
+    event_type = Column(String, nullable=False)
+    processed_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc))
